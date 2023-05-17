@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM arm64v8/openjdk:11
 
 MAINTAINER zv@zv/wtf
 
