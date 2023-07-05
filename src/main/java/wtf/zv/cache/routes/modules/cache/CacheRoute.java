@@ -41,16 +41,6 @@ public class CacheRoute implements RouteDefinitionCallback {
         Consumer<byte[]> onBytesReceived = bytearray -> context.contentType(ContentType.IMAGE_PNG).result(bytearray);
         Consumer<String> onErrorMessage = errorMessage -> reportInternalServerError(context, errorMessage);
 
-        /*
-         *  This snippet below could be implemented to reduce code-verbosity at the cost of readability. This has the
-         *  downside of requiring another control statement for the logging as it's generally an anti-pattern to push
-         *  the logging mechanisms into the utility classes.
-         *
-         *  FilePersistenceTransformer strategy = volumeMapper.getFileExists()
-         *     ? FileReader.withMapper(volumeMapper)
-         *     : FileWriter.withMapper(volumeMapper);
-         */
-
         if (volumeMapper.getFileExists()){
             logger.info("URL: {} - File for URL already cached -> Reading file", volumeMapper.getImageUrl());
 
